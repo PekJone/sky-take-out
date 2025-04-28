@@ -1,18 +1,18 @@
 server:
   port: 8080
 spring:
-  config:
-    activate:
-      on-profile: dev
+#  config:
+#    activate:
+#      on-profile: dev
   #开启循环依赖
   main:
     allow-circular-references: true
   datasource:
     druid:
-      driver-class-name: ${sky.datasource.driver-class-name}
-      url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}
-      username: ${sky.datasource.username}
-      password: ${sky.datasource.password}
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://39.107.242.71:3346/sky_take_out?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+      username: root
+      password: 123456
 
 mybatis:
   mapper-locations:
