@@ -60,7 +60,7 @@ public class EmployeeController {
 
         Map<String,Object> claims = new HashMap<>();
         claims.put(JwtClaimsConstant.EMP_ID,employee.getId());
-        String token = JwtUtil.createJwt(jwtProperties.getAdminSecretKey(),jwtProperties.getAdminTtl(),claims);
+        String token = JwtUtil.createJWT(jwtProperties.getAdminSecretKey(),jwtProperties.getAdminTtl(),claims);
 
         EmployeeLoginVo employeeLoginVo = EmployeeLoginVo.builder()
                 .id(employee.getId())
