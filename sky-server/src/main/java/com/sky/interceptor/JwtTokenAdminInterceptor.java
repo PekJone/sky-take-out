@@ -2,7 +2,7 @@ package com.sky.interceptor;
 
 import common.sky.constant.JwtClaimsConstant;
 import common.sky.context.BaseContext;
-import common.sky.properties.JwtProperties;
+import com.sky.properties.JwtProperties;
 import common.sky.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class JwtTokenAdminInterceptor implements HandlerInterceptor {
 
-    @Autowired
+
     private JwtProperties jwtProperties;
+    @Autowired(required = true)
+    public void setJwtProperties(JwtProperties jwtProperties) {
+        log.info("JWT Secret Key 已注入: {}", jwtProperties.getAdminTtl());
+        this.jwtProperties = jwtProperties;
+    }
 
     /**
      * 校验jwt
@@ -48,6 +53,8 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             log.info("jwt校验:{}", token);
             Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(), token);
             Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
+            //将获取到的员工ID 存入threadlocal
+            BaseContext.threadLocal.set(empId);
             log.info("当前员工id：", empId);
             BaseContext.setCurrentId(empId);
             //3、通过，放行
