@@ -5,6 +5,10 @@ package common.sky.exception;
  * @version 1.0
  * @date 2025-04-27  15:28
  */
-public class BaseException extends Exception{
+public class BaseException extends RuntimeException{
+        public BaseException(){}
+
+    public BaseException(String msg){super(msg);}
+
 
 }

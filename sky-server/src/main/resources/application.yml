@@ -9,14 +9,13 @@ spring:
     allow-circular-references: true
   datasource:
     druid:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://39.107.242.71:3346/sky_take_out?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
       username: root
       password: 123456
 
 mybatis:
-  mapper-locations:
-    - classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.sky.entity
   configuration:
     map-underscore-to-camel-case: true
@@ -26,7 +25,7 @@ logging:
     com:
       sky:
         mapper: debug
-        service: info
+        service: debug
         controller: info
 
 
