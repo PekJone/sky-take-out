@@ -105,8 +105,8 @@ public class EmployeeServiceImple implements EmployeeService {
     public void updateEmp(EmployeeDto employeeDto) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto,employee);
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
         employeeMapper.update(employee);
     }
 }
