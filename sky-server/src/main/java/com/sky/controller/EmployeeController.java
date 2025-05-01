@@ -1,11 +1,14 @@
 package com.sky.controller;
 
+import com.sky.dto.EmployeeDto;
 import com.sky.dto.EmployeeLoginDto;
+import com.sky.dto.EmployeePageQueryDto;
 import com.sky.entity.Employee;
 import com.sky.service.EmployeeService;
 import com.sky.vo.EmployeeLoginVo;
 import common.sky.constant.JwtClaimsConstant;
 import common.sky.properties.JwtProperties;
+import common.sky.result.PageResult;
 import common.sky.result.Result;
 import common.sky.utils.JwtUtil;
 import io.swagger.v3.oas.annotations.Operation;
@@ -84,5 +87,33 @@ public class EmployeeController {
         return Result.success();
     }
 
+    @GetMapping("/page")
+    public Result<PageResult> pages(EmployeePageQueryDto dto){
+        log.info("分页查询");
+        PageResult pageResult = employeeService.page(dto);
+        return Result.success(pageResult);
+    }
+
+    @PostMapping("/status/{status}")
+    public Result enableDisable(@PathVariable Integer status,Long id){
+       log.info("员工状态修改status={},id={}",status,id);
+       employeeService.enableOrDisable(status,id);
+       return Result.success();
+    }
+
+    @GetMapping("/{id}")
+    public Result<Employee> getById(@PathVariable Long id){
+        log.info("员工id={}",id);
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+
+    }
+
+    @PostMapping("/update")
+    public Result update(@RequestBody EmployeeDto employeeDto){
+        log.info("修改员工={}",employeeDto);
+        employeeService.updateEmp(employeeDto);
+        return Result.success();
+    }
 
 }

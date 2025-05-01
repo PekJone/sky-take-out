@@ -5,8 +5,50 @@
         insert into employee
         values (null,#{name},#{username},#{password},#{phone},#{sex},#{idNumber},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser})
     </insert>
+    <update id="update">
+        update employee
+            <set>
+                <if  test="status !=null">
+                    status=#{status},
+                </if>
+                <if  test="username !=null and username !=''">
+                    username = #{username},
+                </if>
+                <if  test="password !=null and password !=''">
+                    password = #{password},
+                </if>
+                <if  test="phone !=null">
+                    phone = #{phone},
+                </if>
+                <if  test="sex !=null ">
+                    sex = #{sex},
+                </if>
+                <if  test="idNumber !=null and idNumber !=''">
+                    id_number = #{idNumber},
+                </if>
+                <if  test="updateTime !=null ">
+                    update_time = #{updateTime},
+                </if>
+                <if  test="updateUser !=null and updateUser !=''">
+                    update_user = #{updateUser},
+                 </if>
+            </set>
+        where id=#{id}
+    </update>
 
     <select id="getByUsername" resultType="com.sky.entity.Employee">
              select * from employee where username=#{username}
+    </select>
+    <select id="list" resultType="com.sky.entity.Employee">
+        select * from employee
+        <where>
+            <if test="name !=null and name !=''">
+                name like concat('%',#{name},'%')
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+    <select id="getById" resultType="com.sky.entity.Employee">
+        select * from employee where id=#{id}
     </select>
 </mapper>

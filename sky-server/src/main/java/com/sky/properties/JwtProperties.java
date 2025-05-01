@@ -1,9 +1,8 @@
-package common.sky.properties;
+package com.sky.properties;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,10 +17,8 @@ public class JwtProperties {
     private String adminSecretKey;
     private long adminTtl;
     private String adminTokenName;
+     /**
 
-
-
-        /**
      * 用户端微信用户生成jwt令牌相关配置
      */
     private String userSecretKey;
