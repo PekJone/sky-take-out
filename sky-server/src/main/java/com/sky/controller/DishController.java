@@ -1,12 +1,13 @@
 package com.sky.controller;
 
+import com.sky.dto.DishDto;
+import com.sky.dto.DishPageQueryDto;
 import com.sky.service.DishService;
+import common.sky.result.PageResult;
 import common.sky.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author 王朋飞
@@ -24,6 +25,18 @@ public class DishController {
         this.dishService = dishService;
     }
 
+    @PostMapping("/addDish")
+    public Result addDish(@RequestBody DishDto dishDto){
+        log.info("新增菜品{}",dishDto);
+        dishService.addDish(dishDto);
+        return Result.success();
+    }
 
+    @GetMapping("/page")
+    public Result<PageResult> page(DishPageQueryDto dto){
+        log.info("分页查询菜品{}",dto);
+        PageResult pageResult= dishService.page(dto);
+        return Result.success(pageResult);
+    }
 
 }

@@ -1,6 +1,8 @@
 package com.sky.service;
 
 import com.sky.dto.CategoryDto;
+import com.sky.dto.CategoryPageQueryDto;
+import common.sky.result.PageResult;
 
 /**
  * @author 王朋飞
@@ -9,4 +11,6 @@ import com.sky.dto.CategoryDto;
  */
 public interface CategoryService {
     void save(CategoryDto categoryDto);
+
+    PageResult page(CategoryPageQueryDto categoryPageQueryDto);
 }

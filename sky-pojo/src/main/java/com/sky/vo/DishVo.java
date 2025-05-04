@@ -1,33 +1,32 @@
-package com.sky.dto;
+package com.sky.vo;
 
+import ch.qos.logback.classic.pattern.LineOfCallerConverter;
 import com.sky.entity.DishFlavor;
-import lombok.Data;
-import org.apache.ibatis.annotations.Lang;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * @author 王朋飞
  * @version 1.0
- * @date 2025-05-01  16:57
+ * @date 2025-05-03  15:49
  */
-@Data
-public class DishDto implements Serializable {
-    private Long id ;
-    private String name ;
+public class DishVo {
+    private Long id;
+
+    private String name;
 
     private Long categoryId;
 
     private BigDecimal price;
 
-    private String image;
+    private String image ;
 
     private String description;
 
     private Integer status;
 
+    private LocalDateTime updateTime;
     private List<DishFlavor> flavors ;
 }

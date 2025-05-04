@@ -30,6 +30,7 @@ public class AutoFillAspect {
     public void autoFill(JoinPoint joinPoint){
         System.out.println("进入切面了");
          //获取目标方法的注解，并拿到注解里面的值
+        BaseContext.setCurrentId(2L);
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();//方法签名
         Method method = methodSignature.getMethod();//方法对象
         AutoFill autoFill =  method.getAnnotation(AutoFill.class);
@@ -54,6 +55,7 @@ public class AutoFillAspect {
                 setCreateUser.invoke(entity, BaseContext.getCurrentId());
                 Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);
                 setUpdateUser.invoke(entity,BaseContext.getCurrentId());
+                log.info("BaseContext_I={}",BaseContext.getCurrentId());
             } else if(operationType == OperationType.UPDATE){
                 System.out.println("我执行了 ");
                 //判断属性值  如果是update就补充两个属性
