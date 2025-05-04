@@ -20,4 +20,6 @@ public interface DishService {
     void delete(List<Long> ids);
 
     DishVo getById(Long id);
+
+    void update(DishDto dto);
 }

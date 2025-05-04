@@ -109,4 +109,23 @@ public class DishServiceImpl implements DishService {
         dishVo.setFlavors(dishFlavors);
         return dishVo;
     }
+    @Transactional //涉及到两张表的加事物
+    @Override
+    public void update(DishDto dto) {
+        Dish dish = new Dish();
+        BeanUtils.copyProperties(dto,dish);
+        //1.修改菜品的基本信息
+        dishMapper.update(dish);
+        //2.修改口味列表信息  先删除旧数据 再新增所有
+        dishFlavorMapper.deleteByDishId(dto.getId());
+        List<DishFlavor> flavors = dto.getFlavors();
+        if(flavors!=null &&flavors.isEmpty()){
+            flavors.forEach(flavor->{
+                flavor.setDishId(dish.getId());
+            });
+        }
+        dishFlavorMapper.addBatch(flavors);
+
+
+    }
 }

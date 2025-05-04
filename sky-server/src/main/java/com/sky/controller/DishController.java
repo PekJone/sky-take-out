@@ -55,4 +55,10 @@ public class DishController {
         DishVo dishVo = dishService.getById(id);
         return Result.success(dishVo);
     }
+
+    public Result update(@RequestBody DishDto dto){
+         log.info("修改菜品{}",dto);
+         dishService.update(dto);
+         return Result.success();
+    }
 }
