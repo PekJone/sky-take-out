@@ -2,6 +2,7 @@ package com.sky.vo;
 
 import ch.qos.logback.classic.pattern.LineOfCallerConverter;
 import com.sky.entity.DishFlavor;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.List;
  * @version 1.0
  * @date 2025-05-03  15:49
  */
+@Data
 public class DishVo {
     private Long id;
 

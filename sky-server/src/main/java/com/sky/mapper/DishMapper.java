@@ -9,6 +9,8 @@ import common.sky.enumeration.OperationType;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.ibatis.annotations.Options;
 
+import java.util.List;
+
 /**
  * @author 王朋飞
  * @version 1.0
@@ -20,4 +22,8 @@ public interface DishMapper {
     void addDish(Dish dish);
 
     Page<DishVo> page(DishPageQueryDto dto);
+
+    Dish selectById(Long id);
+
+    void deleteBatch(List<Long> ids);
 }

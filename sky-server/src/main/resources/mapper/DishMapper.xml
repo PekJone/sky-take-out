@@ -5,6 +5,12 @@
         insert into dish
         values(null,#{name},#{categoryId},#{price},#{image},#{description},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser})
     </insert>
+    <delete id="deleteBatch">
+         delete from dish where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
     <select id="page" resultType="com.sky.vo.DishVo">
         select t1.*,t2.name categoryName from dish t1,category t2 where t1.category_id = t2.id
@@ -19,5 +25,9 @@
         </if>
         order by update_time desc
     </select>
+    <select id="selectById" resultType="com.sky.entity.Dish">
+       select * from dish where id=#{id}
+    </select>
+
 
 </mapper>

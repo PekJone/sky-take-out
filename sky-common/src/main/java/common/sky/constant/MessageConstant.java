@@ -17,4 +17,6 @@ public class MessageConstant {
     public static final String SHOPPING_CART_IS_NULL="购物车为空 不能下单";
     public static final String ADDRESS_BOOK_IS_NULL="用户地址为空 不能下单";
     public static final String LOGIN_FAIL="登录失败";
+
+    public static final String DISH_ON_SALE = "商品在售 不能删除";
 }

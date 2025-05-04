@@ -3,11 +3,14 @@ package com.sky.controller;
 import com.sky.dto.DishDto;
 import com.sky.dto.DishPageQueryDto;
 import com.sky.service.DishService;
+import com.sky.vo.DishVo;
 import common.sky.result.PageResult;
 import common.sky.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author 王朋飞
@@ -39,4 +42,17 @@ public class DishController {
         return Result.success(pageResult);
     }
 
+    @DeleteMapping
+    public Result delete(@RequestParam List<Long> ids){
+        log.info("删除菜品{}",ids);
+        dishService.delete(ids);
+        return Result.success();
+    }
+
+    @GetMapping("/id")
+    public Result<DishVo> getById(@PathVariable Long id){
+        log.info("回显菜品{}",id);
+        DishVo dishVo = dishService.getById(id);
+        return Result.success(dishVo);
+    }
 }
