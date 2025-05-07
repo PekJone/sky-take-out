@@ -87,7 +87,7 @@ public class EmployeeController {
         return Result.success();
     }
 
-    @GetMapping("/page")
+    @PostMapping("/page")
     public Result<PageResult> pages(EmployeePageQueryDto dto){
         log.info("分页查询");
         PageResult pageResult = employeeService.page(dto);
