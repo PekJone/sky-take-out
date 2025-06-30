@@ -33,4 +33,16 @@ public class User implements Serializable {
     private String avatar;
 
     private LocalDateTime createTime;
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Person{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", sex=").append(sex);
+        sb.append(", openid='").append(openid).append('\'');
+        sb.append(", id='").append(id).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
