@@ -36,7 +36,7 @@ public class CommonController {
         String lastName = originFileName.substring(originFileName.lastIndexOf("."));
         log.info("原始文件名{}",lastName);
         String objectName = UUID.randomUUID().toString()+lastName;
-         String url = aliOssUtil.upload(file.getBytes(),objectName);
+        String url = aliOssUtil.upload(file.getBytes(),objectName);
 
          return Result.success(url);
     }

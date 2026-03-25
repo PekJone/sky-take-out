@@ -31,6 +31,7 @@ public class CategoryController {
         return Result.success();
     }
 
+
     @PostMapping("/page")
     public Result<PageResult> page(@RequestBody CategoryPageQueryDto categoryPageQueryDto){
         log.info("分页分类查询：{}",categoryPageQueryDto);
