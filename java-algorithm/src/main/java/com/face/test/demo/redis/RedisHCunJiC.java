@@ -1,4 +1,4 @@
-package com.face.test.demo;
+package com.face.test.demo.redis;
 
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
