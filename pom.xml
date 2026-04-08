@@ -17,6 +17,7 @@
         <module>sky-pojo</module>
         <module>sky-server</module>
         <module>java-algorithm</module>
+        <module>we-chat</module>
     </modules>
 
     <properties>
